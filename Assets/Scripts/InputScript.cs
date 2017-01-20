@@ -3,8 +3,8 @@ using System.Collections;
 
 public class InputScript : MonoBehaviour {
 	
-	Vector3 prevAccel;
-	Quaternion prevRot;
+	private Vector3 prevAccel;
+	private Quaternion prevRot;
 	private float tilt = 0.3f;
 
 	private int sizeFilter= 15;
@@ -22,12 +22,12 @@ public class InputScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		#if(UNITY_IOS)
-			ReceiveInput();
+			ReceiveTiltInput();
 		#endif
 	
 	}
 
-	void ReceiveInput(){
+	void ReceiveTiltInput(){
 		
 		//transform.forward = -(Input.acceleration.normalized);
 		Vector3 add = MovAverage(Input.acceleration.normalized - prevAccel);
